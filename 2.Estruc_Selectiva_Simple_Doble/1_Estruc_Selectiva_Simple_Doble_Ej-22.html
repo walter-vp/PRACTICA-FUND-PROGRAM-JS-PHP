@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="css/stilos.css">
+    <title>Estruc Selectiva Sim Dob</title>
+</head>
+
+<body>
+
+    <header>
+        <h1>ESTRUCTURA SELECTIVA SIMPLE DOBLE</h1>
+        <h2 class="centrado">Problema N° 22</h2>
+    </header>
+
+    <main>
+        <form action="">
+
+            <table>
+                <tr>
+                    <th class="col_izq">Variables</th>
+                    <th class="col_der">Valores</th>
+                </tr>
+                <!-- Entrada de Datos por teclado -->
+                <tr>
+                    <td class="col_izq"><label for="txtmc">Monto de la compra: </label></td>
+                    <td class="col_der"><input type="text" name="txtmc" id="txtmc" value=""></td>
+                </tr>
+                <tr>
+                    <td class="col_izq"><label for="txttc">Tipo Cliente: </label></td>
+                    <td class="col_der">
+                        <select name="txttc" id="txttc">
+                            <option value="G">Cliente General </option>
+                            <option value="A">Cliente Afiliado </option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col_izq"><label for="txtfp">Forma de Pago</label></td>
+                    <td class="col_der">
+                        <select name="txtfp" id="txtfp">
+                            <option value="C">Al Contado </option>
+                            <option value="P">A Plazos </option>
+                        </select>
+                    </td>
+                </tr>
+                <!-- Salida de Datos por Pantalla -->
+
+                <tr>
+                    <td class="col_izq"><label for="txtr">Tasa Descuento/Recargo: </label></td>
+                    <td class="col_der"><input type="text" name="txtr" id="txtr" value="" readonly></td>
+                </tr>
+                <tr>
+                    <td class="col_izq"><label for="txm">Monto de descuento/recargo: </label></td>
+                    <td class="col_der"><input type="text" name="txtm" id="txtm" value="" readonly></td>
+                </tr>
+                <tr>
+                    <td class="col_izq"><label for="txtp">Total a pagar: </label></td>
+                    <td class="col_der"><input type="text" name="txttp" id="txttp" value="" readonly></td>
+                </tr>
+                <tr>
+                    <td class="col_izq"></td>
+                    <td class="col_der"><button type="button" onclick="calcular()">Calcular</button></td>
+                </tr>
+            </table>
+
+        </form>
+
+
+    </main>
+
+    <footer>
+        <p>Todos los derechos reservados &copy;2022 Ing. Walter Vásquez Piña</p>
+    </footer>
+
+    <script>
+        function calcular() {
+
+            //Constantes
+            const DESC_G = 0.15;
+            const DESC_A = 0.2;
+            const REC_G = 0.11;
+            const REC_A = 0.05;
+
+            //Variables
+            let mc = 0; //Monto de la compra
+            let tc = ""; //Tipo de cliente
+            let fp = ""; //Forma de pago
+            let r = ""; //Tasa Descuento/Recargo
+            let m = 0;  //Monto de descuento/recargo
+            let tp = 0; //Total a pagar
+            var doc_tc, doc_fp; //Elementos HMTL "Select"
+
+            mc = parseFloat(document.getElementById('txtmc').value);
+            //console.log(m);
+            doc_tc = document.getElementById('txttc');
+            tc = doc_tc.value;
+            //console.log(doc_tc.value);
+            doc_fp = document.getElementById('txtfp');
+            fp = doc_fp.value;
+            //console.log(doc_fp.value);
+
+            // Proceso
+            if (tc == "G") {
+                if (fp == "C" || fp == "c") {
+                    r = "DESCUENTO 15%";
+                    m = mc * DESC_G;
+                    tp = mc - m;
+                } else {
+                    r = "RECARGO 10%";
+                    m = mc * REC_G;
+                    tp = mc - m;
+                }
+            } else {
+
+                if (fp == "C") {
+                    r = "DESCUENTO 20%";
+                    m = mc * DESC_A;
+                    tp = mc - m;
+                } else {
+                    r = "RECARGO 5%";
+                    m = mc * REC_A;
+                    tp = mc - m;
+                }
+            }
+
+            // Salida
+            document.getElementById('txtr').value = r;
+            document.getElementById('txtm').value = m;
+            document.getElementById('txttp').value = tp;
+            document.getElementById('txtmc').focus();
+        }
+    </script>
+
+</body>
+
+</html>

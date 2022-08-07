@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="css/stilos.css">
+    <title>Estruc Selectiva Sim Dob</title>
+</head>
+
+<body>
+
+    <header>
+        <h1>ESTRUCTURA SELECTIVA SIMPLE DOBLE</h1>
+        <h2 class="centrado">Problema N° 23</h2>
+    </header>
+
+    <main>
+        <form action="">
+
+            <table>
+                <tr>
+                    <th class="col_izq">Variables</th>
+                    <th class="col_der">Valores</th>
+                </tr>
+                <tr>
+                    <td class="col_izq"><label for="txta">Número 1</label></td>
+                    <td class="col_der"><input type="text" name="txta" id="txta" value=""></td>
+                </tr>
+                <tr>
+                    <td class="col_izq"><label for="txtb"></label>Número 2</td>
+                    <td class="col_der"><input type="text" name="txtb" id="txtb" value=""></td>
+                </tr>
+                <tr>
+                    <td class="col_izq"><label for="txtx"></label>Valor</td>
+                    <td class="col_der"><input type="text" name="txtx" id="txtx" value="" readonly></td>
+                </tr>
+                <tr>
+                    <td class="col_izq"></td>
+                    <td class="col_der"><button type="button" onclick="calcular()">Calcular</button></td>
+                </tr>
+            </table>
+
+        </form>
+
+
+    </main>
+
+    <footer>
+        <p>Todos los derechos reservados &copy;2022 Ing. Walter Vásquez Piña</p>
+    </footer>
+
+    <script>
+        function calcular() {
+            // Variables
+            let a, b, x;
+
+            a = parseFloat(document.getElementById('txta').value);
+            b = parseFloat(document.getElementById('txtb').value);
+
+            // Proceso
+            if (a != 0) {
+                x = -b / a;
+            } else {
+                x = 0;
+            };
+
+            // Salida
+            document.getElementById('txtx').value = x;
+            document.getElementById('txta').focus();
+        }
+    </script>
+
+</body>
+
+</html>

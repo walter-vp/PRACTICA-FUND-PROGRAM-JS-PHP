@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="css/stilos.css">
+    <title>Estruc Selectiva Sim Dob</title>
+</head>
+
+<body>
+
+    <header>
+        <h1>ESTRUCTURA SELECTIVA SIMPLE DOBLE</h1>
+        <h2 class="centrado">Problema N° 13</h2>
+    </header>
+
+    <main>
+        <form action="">
+
+            <table>
+                <tr>
+                    <th class="col_izq">Variables</th>
+                    <th class="col_der">Valores</th>
+                </tr>
+                <tr>
+                    <td class="col_izq"><label for="txtc">Carácter: </label></td>
+                    <td class="col_der"><input type="text" name="txtc" id="txtc" value=""></td>
+                </tr>
+                <tr>
+                    <td class="col_izq"><label for="txtr">Resultado: </label></td>
+                    <td class="col_der"><input type="text" name="txtr" id="txtr" value="" readonly></td>
+                </tr>
+                <tr>
+                    <td class="col_izq"></td>
+                    <td class="col_der"><button type="button" onclick="calcular()">Calcular</button></td>
+                </tr>
+            </table>
+
+        </form>
+
+
+    </main>
+
+    <footer>
+        <p>Todos los derechos reservados &copy;2022 Ing. Walter Vásquez Piña</p>
+    </footer>
+
+    <script>
+        function calcular() {
+            // Variables
+            let c, r;
+
+            c = document.getElementById('txtc').value;
+            r = "NO ES UNA VOCAL";
+
+            // Proceso
+            r = "NO ES VOCAL";
+
+            if (c == "a" || c == "A") {
+                r = "ES UNA VOCAL";
+            }
+
+            if (c == "e" || c == "E") {
+                r = "ES UNA VOCAL";
+            }
+
+            if (c == "i" || c == "I") {
+                r = "ES UNA VOCAL";
+            }
+
+            if (c == "o" || c == "O") {
+                r = "ES UNA VOCAL";
+            }
+
+            if (c == "u" || c == "U") {
+                r = "ES UNA VOCAL";
+            };
+
+            // Salida
+            document.getElementById('txtr').value = r;
+            document.getElementById('txtc').focus();
+        }
+    </script>
+
+</body>
+
+</html>

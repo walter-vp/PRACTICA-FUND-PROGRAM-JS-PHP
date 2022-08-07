@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="css/stilos.css">
+    <title>Estruc Selectiva Sim Dob</title>
+</head>
+
+<body>
+
+    <header>
+        <h1>ESTRUCTURA SELECTIVA SIMPLE DOBLE</h1>
+        <h2 class="centrado">Problema N° 20</h2>
+    </header>
+
+    <main>
+        <form action="">
+
+            <table>
+                <tr>
+                    <th class="col_izq">Variables</th>
+                    <th class="col_der">Valores</th>
+                </tr>
+                <tr>
+                    <td class="col_izq"><label for="txtc">Consumo: </label></td>
+                    <td class="col_der"><input type="text" name="txtc" id="txtc" value=""></td>
+                </tr>
+
+                <tr>
+                    <td class="col_izq"><label for="txtm_d">Monto Descuento: </label></td>
+                    <td class="col_der"><input type="text" name="txtm_d" id="txtm_d" value="" readonly></td>
+                </tr>
+                <tr>
+                    <td class="col_izq"><label for="txtm_igv">Monto IGV: </label></td>
+                    <td class="col_der"><input type="text" name="txtm_igv" id="txtm_igv" value="" readonly></td>
+                </tr>
+                <tr>
+                    <td class="col_izq"><label for="txtm_p">Importe a pagar: </label></td>
+                    <td class="col_der"><input type="text" name="txtm_p" id="txtm_p" value="" readonly></td>
+                </tr>
+                <tr>
+                    <td class="col_izq"></td>
+                    <td class="col_der"><button type="button" onclick="calcular()">Calcular</button></td>
+                </tr>
+            </table>
+
+        </form>
+
+
+    </main>
+
+    <footer>
+        <p>Todos los derechos reservados &copy;2022 Ing. Walter Vásquez Piña</p>
+    </footer>
+
+    <script>
+        function calcular() {
+            //Constantes
+            const D1 = 0.1;
+            const D2 = 0.2;
+            const D3 = 0.3;
+            const IGV = 0.19;
+
+            //Variables
+            let c = 0;
+            let m_d = 0;
+            let m_igv = 0;
+            let m_p = 0;
+
+            c = parseFloat(document.getElementById('txtc').value);
+
+            //Proceso
+            if (c > 200) {
+                m_d = c * D3;
+            } else {
+                if (c > 100) {
+                    m_d = c * D2;
+                } else {
+                    m_d = c * D1;
+                }
+            }
+
+            m_igv = (c - m_d) * IGV;
+            m_p = c - m_d + m_igv;
+
+            // Salida
+            document.getElementById('txtm_d').value = m_d;
+            document.getElementById('txtm_igv').value = m_igv;
+            document.getElementById('txtm_p').value = m_p;
+            document.getElementById('txtc').focus();
+        }
+    </script>
+
+</body>
+
+</html>
